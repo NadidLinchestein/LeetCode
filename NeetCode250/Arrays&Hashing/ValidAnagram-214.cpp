@@ -14,6 +14,16 @@
     s and t consist of lowercase English letters.
 */
 
+/*
+    Time Complexity:
+    - O(n), where n is the length of the strings 's' and 't'. 
+      We iterate through each character of the strings once and perform constant time operations for each character.
+
+    Space Complexity:
+    - O(1), as the space used by the 'count' vector is fixed at 26, 
+      regardless of the size of the input strings. This makes the space usage constant.
+*/
+
 class Solution {
 public:
     bool isAnagram(string s, string t) {

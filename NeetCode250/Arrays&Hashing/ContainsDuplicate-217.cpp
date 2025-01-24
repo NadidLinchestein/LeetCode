@@ -26,8 +26,14 @@
 */
 
 /*
-    Time complexity: O(n)
-    Space complexity: O(n)
+    Time Complexity:
+    - O(n), where n is the size of the input vector 'nums'.
+      Each of the n insert and find operations on the unordered_set takes O(1) on average,
+      making the overall complexity linear.
+
+    Space Complexity:
+    - O(n), as the unordered_set 'seen' can potentially store all the elements
+      in the input vector 'nums' if there are no duplicates.
 */
 
 #include <unordered_set>  // For unordered_set (hash-based set)
