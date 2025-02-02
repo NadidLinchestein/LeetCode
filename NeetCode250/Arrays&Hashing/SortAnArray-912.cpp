@@ -39,45 +39,52 @@
 
 class Solution {
 public:
+    // Function to sort an array using Merge Sort algorithm
     vector<int> sortArray(vector<int>& nums) {
-        // Call the merge sort helper function
+        // Call the merge sort helper function to sort the array
         performMergeSort(nums, 0, nums.size() - 1);
-        return nums;
+        
+        // Return the sorted array
+        return nums; 
     }
 
 private:
-    // This function recursively divides the array into smaller parts
+    // Function to recursively divide the array into smaller subarrays and sort them
     void performMergeSort(vector<int>& array, int left, int right) {
         // Base case: If the subarray has one or zero elements, it is already sorted
         if (left >= right) return;
         
-        // Calculate the middle index to split the array into two halves
-        int middle = left + (right - left) / 2;
+        // Calculate the middle index to split the array into two halves  // Prevents potential overflow
+        int middle = left + (right - left) / 2; 
         
-        // Recursively sort the left half
+        // Recursively sort the left half of the array (from index 'left' to 'middle')
         performMergeSort(array, left, middle);
         
-        // Recursively sort the right half
+        // Recursively sort the right half of the array (from index 'middle + 1' to 'right')
         performMergeSort(array, middle + 1, right);
         
-        // Merge the sorted halves back together
+        // Merge the sorted halves back together to form a sorted array
         mergeSortedHalves(array, left, middle, right);
     }
 
-    // This function merges two sorted halves of an array into a single sorted sequence
+    // Function to merge two sorted halves of an array into a single sorted sequence
     void mergeSortedHalves(vector<int>& array, int left, int middle, int right) {
-        // Temporary vectors to hold the left and right halves of the array
+        // Create temporary vectors to store the left and right halves of the array
         vector<int> leftHalf(array.begin() + left, array.begin() + middle + 1);
         vector<int> rightHalf(array.begin() + middle + 1, array.begin() + right + 1);
         
-        // Indices to track positions in the left and right halves
-        int leftIndex = 0, rightIndex = 0, sortedIndex = left;
+        // Indices to track the current positions in the left and right halves
+        int leftIndex = 0;      // Pointer to track position in leftHalf
+        int rightIndex = 0;     // Pointer to track position in rightHalf
+        int sortedIndex = left; // Pointer to track position in the original array
         
         // Merge elements from both halves back into the original array in sorted order
         while (leftIndex < leftHalf.size() && rightIndex < rightHalf.size()) {
             if (leftHalf[leftIndex] <= rightHalf[rightIndex]) {
+                // If leftHalf's current element is smaller, place it in the array
                 array[sortedIndex++] = leftHalf[leftIndex++];
             } else {
+                // Otherwise, place rightHalf's current element in the array
                 array[sortedIndex++] = rightHalf[rightIndex++];
             }
         }
@@ -91,5 +98,7 @@ private:
         while (rightIndex < rightHalf.size()) {
             array[sortedIndex++] = rightHalf[rightIndex++];
         }
+        
+        // At this point, the merged portion of the array is sorted
     }
 };
