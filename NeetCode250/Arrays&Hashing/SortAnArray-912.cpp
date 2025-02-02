@@ -37,6 +37,65 @@
     O(n) due to the use of temporary arrays to store the left and right halves during merging. This is an inherent space cost of the merge sort algorithm since merging requires extra space proportional to the size of the input array.
 */
 
+/*
+=========================================================
+  Sample Run of Merge Sort Algorithm
+  Input: nums = {5, 3, 8, 4, 2}
+=========================================================
+
+### Step 1: Initial Input
+   Array before sorting: [5, 3, 8, 4, 2]
+
+### Step 2: Recursively Split the Array
+---------------------------------------------------------
+
+1st Split: performMergeSort(array, 0, 4)
+    - Splitting into two halves: Left (0-2) and Right (3-4)
+
+    Left Half: performMergeSort(array, 0, 2) → [5, 3, 8]
+        - Splitting into: Left (0-1) and Right (2-2)
+
+        Left Sub-Half: performMergeSort(array, 0, 1) → [5, 3]
+            - Splitting into: Left (0-0) and Right (1-1)
+
+            * Base case reached: Left (0-0) → [5] (already sorted)
+            * Base case reached: Right (1-1) → [3] (already sorted)
+            
+            - Merging: [5] and [3] → [3, 5]
+        
+        * Base case reached: Right (2-2) → [8] (already sorted)
+
+        - Merging: [3, 5] and [8] → [3, 5, 8]
+    
+    Right Half: performMergeSort(array, 3, 4) → [4, 2]
+        - Splitting into: Left (3-3) and Right (4-4)
+
+        * Base case reached: Left (3-3) → [4] (already sorted)
+        * Base case reached: Right (4-4) → [2] (already sorted)
+
+        - Merging: [4] and [2] → [2, 4]
+
+### Step 3: Merge Sorted Halves
+---------------------------------------------------------
+
+Merging Left and Right Halves:
+    Left Sorted Half  → [3, 5, 8]
+    Right Sorted Half → [2, 4]
+
+    - Compare first elements: 3 vs 2 → Insert 2
+    - Compare next: 3 vs 4 → Insert 3
+    - Compare next: 5 vs 4 → Insert 4
+    - Compare next: 5 vs 8 → Insert 5
+    - Last element remaining: Insert 8
+
+    - Final sorted array: [2, 3, 4, 5, 8]
+
+=========================================================
+  Final Output:
+  Sorted Array → [2, 3, 4, 5, 8]
+=========================================================
+*/
+
 class Solution {
 public:
     // Function to sort an array using Merge Sort algorithm
