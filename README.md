@@ -1,6 +1,6 @@
 # LeetCode Algorithms & Data Structures
 
-My C++ implementation of Algorithms & Data Structures Questions from LeetCode.
+My Solutions to Algorithms & Data Structures Questions from LeetCode.
 
 LeetCode is an online platform designed for honing programming and algorithmic skills through a vast collection of meticulously curated coding challenges.
 
